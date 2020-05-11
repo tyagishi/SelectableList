@@ -2,7 +2,7 @@
 
 SwiftUIのリストだと選択されていることがわかりにくいと思ったので、作りました。
 
-![こんな感じです](https://github.com/tyagishi/SelectableList/image.png "利用イメージ")
+![こんな感じです](https://github.com/tyagishi/SelectableList/image.jpg "利用イメージ")
 
 コードイメージ：
 '''
