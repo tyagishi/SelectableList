@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct SelectableList<T:Comparable & Hashable>: View {
     public var content:[T]
-    public @Binding var selectedItem:T?
+    @Binding var selectedItem:T?
     public var rowCell:(T)-> Text
     public var selectionAction:(_ item: T)->Void
     public var body: some View {
