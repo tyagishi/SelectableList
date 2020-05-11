@@ -9,10 +9,10 @@
 import SwiftUI
 
 public struct SelectableList<T:Comparable & Hashable>: View {
-    var content:[T]
-    @Binding var selectedItem:T?
-    var rowCell:(T)-> Text
-    var selectionAction:(_ item: T)->Void
+    public var content:[T]
+    public @Binding var selectedItem:T?
+    public var rowCell:(T)-> Text
+    public var selectionAction:(_ item: T)->Void
     public var body: some View {
         List {
             ForEach(content, id: \.self) { item in
@@ -24,10 +24,10 @@ public struct SelectableList<T:Comparable & Hashable>: View {
 }
 
 public struct SelectableCell<T:Comparable> : View {
-    var item: T
+    public var item: T
     @Binding var selectedItem: T?
-    var rowCell:(T)->Text
-    var selectionAction:(_ selected: T)->Void
+    public var rowCell:(T)->Text
+    public var selectionAction:(_ selected: T)->Void
 
     public var body: some View {
         HStack {
