@@ -2,10 +2,11 @@
 
 SwiftUIのリストだと選択されていることがわかりにくいと思ったので、作りました。
 
-![こんな感じです](https://github.com/tyagishi/SelectableList/image.jpg "利用イメージ")
 
-コードイメージ：
-'''
+![こんな感じ](image.jpg)
+
+コード例：
+```
 struct ContentView: View {
     let data = ["item1", "item2", "item3", "item4"]
     @State private var selected:String?
@@ -26,4 +27,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-'''
+```
+
+課題
+- rowCellがText限定なのをなんとかしたい
