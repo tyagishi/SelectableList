@@ -13,6 +13,14 @@ public struct SelectableList<T:Comparable & Hashable>: View {
     @Binding var selectedItem:T?
     public var rowCell:(T)-> Text
     public var selectionAction:(_ item: T)->Void
+    
+    public init(content: [T], selectedItem: Binding<T?>, rowCell: @escaping ((T) -> Text) , selectionAction: @escaping( (T)->Void) ) {
+        self.content = content
+        self._selectedItem = selectedItem
+        self.rowCell = rowCell
+        self.selectionAction = selectionAction
+    }
+    
     public var body: some View {
         List {
             ForEach(content, id: \.self) { item in
