@@ -31,3 +31,4 @@ struct ContentView_Previews: PreviewProvider {
 
 課題
 - rowCellがText限定なのをなんとかしたい
+- ImageがiOSにしかないので、iOS限定だけど、そのうちMacOSにも対応させたい。（SwiftPackageがリソース対応してくれるのを待ってます）
