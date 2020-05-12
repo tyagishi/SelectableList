@@ -8,13 +8,13 @@
 
 import SwiftUI
 
-public struct SelectableList<T:Comparable & Hashable>: View {
+public struct SelectableList<T:Comparable & Hashable, Content>: View  where Content: View{
     public var content:[T]
     @Binding var selectedItem:T?
-    public var rowCell:(T)-> Text
+    public var rowCell:(T)-> Content
     public var selectionAction:(_ item: T)->Void
     
-    public init(content: [T], selectedItem: Binding<T?>, rowCell: @escaping ((T) -> Text) , selectionAction: @escaping( (T)->Void) ) {
+    public init(content: [T], selectedItem: Binding<T?>, @ViewBuilder rowCell: @escaping ((T) -> Content) , selectionAction: @escaping( (T)->Void) ) {
         self.content = content
         self._selectedItem = selectedItem
         self.rowCell = rowCell
@@ -31,10 +31,10 @@ public struct SelectableList<T:Comparable & Hashable>: View {
     }
 }
 
-public struct SelectableCell<T:Comparable> : View {
+public struct SelectableCell<T:Comparable, Content> : View where Content: View {
     public var item: T
     @Binding var selectedItem: T?
-    public var rowCell:(T)->Text
+    public var rowCell:(T)->Content
     public var selectionAction:(_ selected: T)->Void
 
     public var body: some View {
@@ -56,8 +56,11 @@ struct SelectableList_Previews: PreviewProvider {
     @State static var contentExample = ["test1", "test2"]
     @State static var selectedString:String? = "test1"
     static var previews: some View {
-        SelectableList(content: contentExample, selectedItem: $selectedString, rowCell: { item -> Text in
+        SelectableList(content: contentExample, selectedItem: $selectedString, rowCell: { item in
+            HStack{
+            Text("new Celltype!")
             Text(item)
+            }
                 }
             , selectionAction: { item in
                 print("selected \(item)")
