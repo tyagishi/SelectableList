@@ -40,7 +40,11 @@ public struct SelectableCell<T:Comparable, Content> : View where Content: View {
     public var body: some View {
         HStack {
             if ( item == selectedItem ) {
+#if os(iOS) || os(watchOS) || os(tvOS)
                 Image(systemName: "checkmark").foregroundColor(.accentColor)
+#elseif os(OSX)
+                Text("✔️")
+#endif
             }
             Spacer()
             self.rowCell(self.item)
